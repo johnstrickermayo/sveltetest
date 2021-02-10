@@ -1,8 +1,12 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+
+	"example.com/just-a-test/src/env"
+)
 
 func main() {
 	http.Handle("/", http.FileServer(http.Dir("./public")))
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":"+env.Port(), nil)
 }
